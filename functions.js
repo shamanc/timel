@@ -1,5 +1,5 @@
 
-// Get items form DOM and send to file
+// Get items form the DOM and send to file
 function saveItems() {
     let itemsCollection = document.querySelectorAll('#items div');
     let obj = {};
@@ -25,4 +25,20 @@ function addItem() {
     div.innerHTML = "<span>" + newItem + "</span>: <span>0</span>";
     let itemsDiv = document.querySelector('#items');
     itemsDiv.append(div);
+}
+
+// Update all items in the DOM
+function updateAll() {
+    let newMileage = document.querySelector('#newMileage').value;
+    let currentMileage = document.querySelector('#mileage span:nth-child(2)').innerHTML;
+    let delta = newMileage - currentMileage;
+    
+    let itemsCollection = document.querySelectorAll('#items div');
+    for (let i=0; i<itemsCollection.length; i++) {
+        let age = itemsCollection[i].querySelectorAll('span')[1];
+        
+        age.innerText = Number(age.innerText) + delta; // to update an innetText of a span
+    }
+
+    //alert(currentMileage.innerText);
 }

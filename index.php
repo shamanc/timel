@@ -10,6 +10,8 @@
 </head>
 <body>
 
+Новый пробег<input type="number" id="newMileage"> <button onclick="updateAll()">SAVE new</button>
+
 <!-- To read & print out data form the file -->
 <?php
 $mileAge = file_get_contents("data.json");
@@ -17,7 +19,7 @@ $decoded = json_decode($mileAge, true);
 
 foreach ($decoded as $item => $value) {
     echo '<div id=\'items\'>';
-    echo '<div><span>', $item, '</span>: <span>', $value, '</span></div>';
+    echo '<div id="', $item, '"><span>', $item, '</span>: <span>', $value, '</span></div>';
     echo '</div>';
 }
 ?>
