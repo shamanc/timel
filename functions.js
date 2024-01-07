@@ -9,15 +9,12 @@ function saveItems() {
         let age = itemsCollection[i].querySelectorAll('span')[1].innerText;
         obj[name] = age;
     }
-        //alert(obj['Масло']);
 
         let mAge = document.querySelector('#mileage span:nth-child(2)').innerText;
 
         obj.mileage = mAge;
-        
+        //obj[mileage] = mAge; //Doesn't work no ideas why
         //alert(mAge);
-
-        
 
     fetch("additem.php", {
         method: "POST",
