@@ -10,13 +10,23 @@
 </head>
 <body>
 
-Новый пробег<input type="number" id="newMileage"> <button onclick="updateAll()">SAVE new</button>
 
-<!-- To read & print out data form the file -->
 <?php
 $mileAge = file_get_contents("data.json");
 $decoded = json_decode($mileAge, true);
 
+echo '<div id="mileage"><span>Actual mileage: </span><span>', $decoded['mileage'], '</span></div>';
+
+unset($decoded['mileage']);
+//destroy a single element of an array
+?>
+
+<br>
+To update mileage <input type="number" id="newMileage"> <button onclick="updateAll()">OK</button>
+<hr>
+
+<!-- To read & print out data form the file -->
+<?php
 foreach ($decoded as $item => $value) {
     echo '<div id=\'items\'>';
     echo '<div id="', $item, '"><span>', $item, '</span>: <span>', $value, '</span></div>';
