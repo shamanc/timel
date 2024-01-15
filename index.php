@@ -10,7 +10,6 @@
 </head>
 <body>
 
-
 <?php
 $mileAge = file_get_contents("data.json");
 $decoded = json_decode($mileAge, true);
@@ -26,19 +25,40 @@ To update mileage <input type="number" id="newMileage"> <button onclick="updateA
 <hr>
 
 <!-- To read & print out data form the file -->
-<?php
+<!-- <?php
 foreach ($decoded as $item => $value) {
     echo '<div id=\'items\'>';
-    echo '<div id="', $item, '"><span>', $item, '</span>: <span>', $value, '</span></div>';
+
+    echo '<div id="', $item, '"><span>', $item, '</span>: <span>', $value, '</span><span></span></div>';
+
     echo '</div>';
 }
 ?>
+ -->
 
-<hr>
-Add a new item <input type="text" id="newitem">
+ <?php
+foreach ($decoded as $item => $fields)
+{
+    echo '<div id=\'items\'>';
+    echo '<div id="', $item, '">';
+    echo "<span>$item</span> | ";
+
+    foreach ($fields as $field => $value)
+    {
+        echo "<span>$value</span>", " ";
+    }
+    
+    echo '</div>';
+    echo '</div>';
+    echo '<hr>';
+}
+?>
+
+Add a new item <input type="text" id="newitem"><br>
+Add item note <input type="text" id="newitem_note">
 <button onclick="addItem()">Add</button>
-
 <hr>
+
 <button onclick="saveItems()">Save2Serv</button>
 </body>
 </html>
